@@ -1,19 +1,23 @@
 package view;
 
-import javax.swing.JFrame;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 
-import controller.Global;
+import model.ResLoader;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        JFrame MainWindow = new JFrame();
-        MainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        MainWindow.setTitle(Global.gameName + " -ver " + Global.gameVer);
+        MainWindow mainWindow = new MainWindow();
 
-        MainWindow.setLocationRelativeTo(null);
-        MainWindow.setResizable(false);
-        MainWindow.setVisible(true);
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        gd.setFullScreenWindow(mainWindow);
+
+        mainWindow.onSizeChange();
+        mainWindow.setVisible(true);
+
+        ResLoader resLoader = new ResLoader();
+        resLoader.reload();
     }
 }
