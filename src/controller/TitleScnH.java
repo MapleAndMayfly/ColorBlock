@@ -1,11 +1,11 @@
 package controller;
 
-import view.MainWindow;
+import view.GamePanel;
 
 public class TitleScnH implements SceneHandler
 {
     @Override
-    public void handle(MainWindow gp)
+    public void handle(GamePanel gp)
     {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'handle'");

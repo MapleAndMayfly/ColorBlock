@@ -10,6 +10,7 @@ public class Global
     public static final String GAME_NAME = "ColorBlock";
     public static final String GAME_VER = "0.0 beta";
     public static final int FPS[] = { 60, 120, 240, 480, -1 };
+    public static final int PPS[] = { 120, 240, 240, 480, -1 };
     public static final Map<String, Double> SCR_PROPORTION = Map.of
     (
         "1:1",  1.0,
@@ -23,6 +24,6 @@ public class Global
      */
     public static String scrProp = "3:2";
     public static String lang = "zh_cn";
-    public static String bgi = "titleBgi";
+    public static String bgiName = "titleBgi";
     public static int fpsLevel = 1;
 }

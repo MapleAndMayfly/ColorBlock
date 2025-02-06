@@ -2,29 +2,68 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import controller.KeyHandler;
+import controller.ScnHandlerMaster;
 import model.Global;
 import model.ResLoader;
 
 public class GamePanel extends JPanel
 {
+    private KeyHandler keyH;
+    private ScnHandlerMaster scnH;
+    private BufferedImage bgi;
+
+    private boolean isBgiChanged;
+    
+    public static enum scene
+    {
+        TITLE,
+        POPUP
+    }
+    public ArrayList<scene> curScene = new ArrayList<>();
+
     GamePanel()
     {
+        keyH = new KeyHandler();
+        scnH = new ScnHandlerMaster();
+        curScene.add(scene.TITLE);
+        isBgiChanged = false;
+
         this.setDoubleBuffered(true);
+        this.setFocusable(true);
+        
+        this.addKeyListener(keyH);
     }
+
+
+    public KeyHandler getKeyH() { return keyH; }
+
 
     @Override
     protected void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        applyBgi(g);
+
+        paintBgi(g);
     }
 
-    private void applyBgi(Graphics g)
+    public void changeBgi(String bgiName)
     {
-        BufferedImage bgi = ResLoader.getImg(Global.bgi);
+        Global.bgiName = bgiName;
+        isBgiChanged = true;
+    }
+
+    private void paintBgi(Graphics g)
+    {
+        if (isBgiChanged)
+        {
+            bgi = ResLoader.getImg(Global.bgiName);
+            if (bgi != null) isBgiChanged = false;
+        }
 
         if (bgi != null)
         {
@@ -43,5 +82,11 @@ public class GamePanel extends JPanel
 
             g.drawImage(bgi, bgiX, bgiY, bgiW, bgiH, this);
         }
+    }
+
+    public void _draw(double delta)
+    {
+        scnH.handle(this);
+        this.repaint();
     }
 }

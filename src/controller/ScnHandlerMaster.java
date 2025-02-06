@@ -1,10 +1,12 @@
 package controller;
 
-import view.MainWindow;
+import java.util.NoSuchElementException;
+
+import view.GamePanel;
 
 interface SceneHandler
 {
-    public void handle(MainWindow gp);
+    public void handle(GamePanel gp);
 }
 
 public class ScnHandlerMaster
@@ -14,20 +16,27 @@ public class ScnHandlerMaster
      * 
      * @param gp 主界面 - main interface
      */
-    public void handle(MainWindow gp)
+    public void handle(GamePanel gp)
     {
-        switch (gp.curScene)
+        try
         {
-            case MainWindow.scene.TITLE:
-                if (gp.getKeyH().EscDown)   // 退出游戏 - Exit the game
-                {
-                    // 避免出现复数弹窗 - to avoid multiple popup
-                    gp.curScene = MainWindow.scene.POPUP;
-                }
-                
-                break;
-            default:
-                break;
+            switch (gp.curScene.getLast())
+            {
+                case GamePanel.scene.TITLE:
+                    if (gp.getKeyH().EscDown)   // 退出游戏 - Exit the game
+                    {
+                        // 避免出现复数弹窗 - to avoid multiple popup
+                        gp.curScene.add(GamePanel.scene.POPUP);
+                    }
+                    
+                    break;
+                default:
+                    break;
+            }
+        }
+        catch (NoSuchElementException e)
+        {
+            // TODO: handle exception
         }
     }
 }
