@@ -25,6 +25,8 @@ public class Logger
         {
             logFile.delete();
         }
+
+        log("@Logger: Logger is ready.");
     }
 
     public static void log(String rawMessage)
@@ -47,11 +49,23 @@ public class Logger
         try (FileWriter writer = new FileWriter(logFileName, true))
         {
             writer.write(msg.toString());
-            System.out.println(msg.toString());
+            System.out.print(msg.toString());
         }
         catch (IOException e)
         {
             e.printStackTrace();
         }
+    }
+
+    public static void error(String className, Exception e)
+    {
+        StringBuilder rawMsg = new StringBuilder(className);
+        rawMsg.append(": Exception occurs:\n").append(e.toString());
+        for (StackTraceElement element : e.getStackTrace())
+        {
+            rawMsg.append("\n\tat ").append(element);
+        }
+
+        log(rawMsg.toString());
     }
 }

@@ -14,12 +14,11 @@ public class ResLoader
     private static Map<String, BufferedImage> imgMap = new HashMap<>();
     private MetaReader metaReader = new MetaReader();
 
-    public static BufferedImage getImg(String key)
+    public static BufferedImage getImg(String key) throws IllegalArgumentException
     {
         BufferedImage img = imgMap.get(key);
         if (img == null)
         {
-            System.out.println("Image not found for key: " + key);
             throw new IllegalArgumentException("Image not found for key: " + key);
         }
         return img;
@@ -38,10 +37,9 @@ public class ResLoader
         {
             dict = metaReader.readMeta(Global.dictPath);
         }
-        catch (IOException e)
+        catch (Exception e)
         {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            Logger.error("@ResLoader", e);
         }
 
         if (dict != null) {
@@ -61,6 +59,8 @@ public class ResLoader
 
     private void loadImg(Map<String, String> target)
     {
+        imgMap.put("null", null);
+
         target.forEach((key, value) ->
         {
             try
@@ -73,13 +73,13 @@ public class ResLoader
                 }
                 else
                 {
-                    System.out.println("Failed to load image: " + imgPath);
+                   Logger.log("@ResLoader: Failed to load image: " + imgPath);
                 }
             }
             catch (IOException e)
             {
-                System.out.println("Error reading file: " + value + key + ".png");
-                e.printStackTrace();
+                Logger.log("@ResLoader: Error reading file: " + value + key + ".png");
+                Logger.error("@ResLoader", e);
             }
         });
     }

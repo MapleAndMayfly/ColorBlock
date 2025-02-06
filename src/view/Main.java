@@ -17,17 +17,17 @@ public class Main
         // last log: logIdx; this log: logIdx+1
         Logger.setLogIdx(Global.logIdx + 1);
         Logger.initFile();
-        Logger.log("Main: Logger is ready.");
 
         MainWindow mainWindow = new MainWindow();
 
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         gd.setFullScreenWindow(mainWindow);
 
-        mainWindow.onSizeChange();
-        mainWindow.setVisible(true);
-
         ResLoader resLoader = new ResLoader();
         resLoader.reload();
+
+        mainWindow.onSizeChange();
+        mainWindow._gameStart();
+        mainWindow.setVisible(true);
     }
 }

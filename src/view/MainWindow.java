@@ -3,6 +3,7 @@ package view;
 import javax.swing.JFrame;
 
 import controller.Global;
+import controller.Logger;
 
 import java.awt.GridBagLayout;
 import java.awt.Color;
@@ -27,22 +28,22 @@ public class MainWindow extends JFrame
         this.getContentPane().setBackground(Color.BLACK);
 
         this.add(gPanel);
-
-        _gameStart();
+        Logger.log("@MainWindow: MainWindow is ready.");
     }
 
-    private void _gameStart()
+    public void _gameStart()
     {
         renderThread = new Thread(this::_draw); 
         processThread = new Thread(this::_process);
 
         renderThread.start();
+        Logger.log("@MainWindow: RenderThread starts.");
 
         // 游戏时（而非选歌或是其他什么时）启用
         // run for game play only (instead of selecting songs or sth else)
         // processThread.start();
     }
-    
+
     public void _draw()
     {
         double drawInterval = 1e9 / Global.FPS[Global.fpsLevel];
@@ -136,6 +137,10 @@ public class MainWindow extends JFrame
 
         gPanel.setPreferredSize(new Dimension(dispW, dispH));
         gPanel.revalidate();
+
+        String msg = "@MainWindow: Size of GamePanel changes to " +
+                     dispW + "*" + dispH + " (" + Global.scrProp + ")";
+        Logger.log(msg);
         gPanel.changeBgi(Global.bgiName);
     }
 }

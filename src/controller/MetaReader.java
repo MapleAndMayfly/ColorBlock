@@ -8,8 +8,10 @@ import java.util.HashMap;
 
 public class MetaReader
 {
-    public Map<String, Map<String, String>> readMeta(String path) throws IOException
+    public Map<String, Map<String, String>> readMeta(String path) throws IOException, MetaBrokenException
     {
+        Logger.log("@MetaReader: Reading meta file [" + path + "].");
+
         StringBuilder content = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(path)))
         {
@@ -52,6 +54,8 @@ public class MetaReader
             }
             ret.put(outerKey, valueMap);
         }
+
+        Logger.log("@MetaReader: File [" + metaPath + "] reading accomplished.");
         return ret;
     }
 }
@@ -60,6 +64,6 @@ class MetaBrokenException extends RuntimeException
 {
     MetaBrokenException(String metaPath)
     {
-        super("The file at " + metaPath + " is damaged");
+        super("File [" + metaPath + "] is broken");
     }
 }

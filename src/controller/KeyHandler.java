@@ -20,8 +20,10 @@ public class KeyHandler implements KeyListener
 
         switch (kc)
         {
+            //*
             case KeyEvent.VK_F8:        // 仅调试用 - for debugging only
-                System.exit(0);
+                Logger.log("@KeyHandler: F8 pressed, system exit.");
+                System.exit(0);  //*/
 
             case KeyEvent.VK_ESCAPE:
                 EscDown = true;

@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import controller.Global;
 import controller.KeyHandler;
+import controller.Logger;
 import controller.ResLoader;
 import controller.ScnHandlerMaster;
 
@@ -37,6 +38,8 @@ public class GamePanel extends JPanel
         this.setFocusable(true);
         
         this.addKeyListener(keyH);
+
+        Logger.log("@GamePanel: GamePanel is ready.");
     }
 
     public KeyHandler getKeyH() { return keyH; }
@@ -53,14 +56,23 @@ public class GamePanel extends JPanel
     {
         Global.bgiName = bgiName;
         isBgiChanged = true;
+        Logger.log("@GamePanel: Change backgound image to [" + bgiName + "].");
     }
 
     private void paintBgi(Graphics g)
     {
         if (isBgiChanged)
         {
-            bgi = ResLoader.getImg(Global.bgiName);
-            if (bgi != null) isBgiChanged = false;
+            try
+            {
+                bgi = ResLoader.getImg(Global.bgiName);
+                if (bgi != null) isBgiChanged = false;
+            }
+            catch (IllegalArgumentException e)
+            {
+                Logger.error("@GamePanel", e);
+                changeBgi("null");
+            }
         }
 
         if (bgi != null)

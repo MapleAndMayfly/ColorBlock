@@ -28,6 +28,7 @@ public class ScnHandlerMaster
                     {
                         // 避免出现复数弹窗 - to avoid multiple popup
                         gp.curScene.add(GamePanel.scene.POPUP);
+                        Logger.log("@ScnHandlerMaster: Change current scene to " + gp.curScene.getLast());
                     }
                     
                     break;
