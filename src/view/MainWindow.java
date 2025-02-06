@@ -2,7 +2,7 @@ package view;
 
 import javax.swing.JFrame;
 
-import model.Global;
+import controller.Global;
 
 import java.awt.GridBagLayout;
 import java.awt.Color;
@@ -75,6 +75,7 @@ public class MainWindow extends JFrame
 
             if (timer >= 1e9)   // ~1s
             {
+                // TODO: get render FPS
                 // System.out.printf("Render: %dFPS\n", drawCount);
                 timer = 0;
                 drawCount = 0;
@@ -111,6 +112,7 @@ public class MainWindow extends JFrame
 
             if (timer >= 1e9)
             {
+                // TODO: get process FPS
                 // System.out.printf("Process: %dFPS\n", processCount);
                 timer = 0;
                 processCount = 0;

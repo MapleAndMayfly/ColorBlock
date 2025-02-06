@@ -22,8 +22,9 @@ public class ScnHandlerMaster
         {
             switch (gp.curScene.getLast())
             {
-                case GamePanel.scene.TITLE:
-                    if (gp.getKeyH().EscDown)   // 退出游戏 - Exit the game
+                    case GamePanel.scene.TITLE:
+                    // 退出游戏 - Exit the game
+                    if (gp.getKeyH().EscDown)
                     {
                         // 避免出现复数弹窗 - to avoid multiple popup
                         gp.curScene.add(GamePanel.scene.POPUP);

@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
+import controller.Global;
 import controller.KeyHandler;
+import controller.ResLoader;
 import controller.ScnHandlerMaster;
-import model.Global;
-import model.ResLoader;
 
 public class GamePanel extends JPanel
 {
@@ -39,9 +39,7 @@ public class GamePanel extends JPanel
         this.addKeyListener(keyH);
     }
 
-
     public KeyHandler getKeyH() { return keyH; }
-
 
     @Override
     protected void paintComponent(Graphics g)
