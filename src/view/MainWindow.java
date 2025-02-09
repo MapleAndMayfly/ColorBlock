@@ -2,8 +2,8 @@ package view;
 
 import javax.swing.JFrame;
 
-import controller.Global;
 import controller.Logger;
+import model.Global;
 
 import java.awt.GridBagLayout;
 import java.awt.Color;

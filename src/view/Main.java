@@ -3,9 +3,10 @@ package view;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
-import controller.Global;
 import controller.Logger;
 import controller.ResLoader;
+import model.Global;
+import model.MultiLang;
 
 public class Main
 {
@@ -13,10 +14,9 @@ public class Main
     {
         // TODO: initialize attributes of Global
 
-        // 上次记录：logIdx; 这次记录：logIdx+1
-        // last log: logIdx; this log: logIdx+1
-        Logger.setLogIdx(Global.logIdx + 1);
-        Logger.initFile();
+        Logger.init();
+
+        MultiLang.changeLocale(Global.locale);
 
         MainWindow mainWindow = new MainWindow();
 

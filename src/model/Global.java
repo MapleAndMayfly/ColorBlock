@@ -1,5 +1,6 @@
-package controller;
+package model;
 
+import java.util.Locale;
 import java.util.Map;
 
 public class Global
@@ -11,6 +12,7 @@ public class Global
     public static final String GAME_VER = "0.1 Prototype";
     public static final String dictPath = "assets/dict.cbmeta";
     public static final String logsPath = "logs/";
+    public static final String langPath = "assets/lang/";
     public static final int FPS[] = { 60, 120, 240, 480, -1 };
     public static final int PPS[] = { 120, 240, 240, 480, -1 };
     public static final Map<String, Double> SCR_PROPORTION = Map.of
@@ -24,9 +26,9 @@ public class Global
     /**
      * 全局变量 - global variables
      */
+    public static String bgiName = "Background_Title";  // 用GamePanel.changeBgi以更改 - Use GamePanel.changeBgi to alter
+    public static String locale = "zh_CN";              // 用MultiLang.changeLocale以更改 - Use MultiLang.changeLocale to alter
     public static String scrProp = "3:2";
-    public static String lang = "zh_cn";
-    public static String bgiName = "Background_Title";
     public static int fpsLevel = 1;
     public static int logIdx = 0;
 }

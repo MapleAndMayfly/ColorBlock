@@ -1,9 +1,11 @@
-package controller;
+package controller.sceneHandler;
 
 import view.GamePanel;
 
-public class TitleScnH implements SceneHandler
+public class TitleScnHandler implements SceneHandler
 {
+    
+
     @Override
     public void handle(GamePanel gp)
     {

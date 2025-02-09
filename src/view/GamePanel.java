@@ -2,15 +2,15 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-import controller.Global;
 import controller.KeyHandler;
 import controller.Logger;
 import controller.ResLoader;
-import controller.ScnHandlerMaster;
+import controller.sceneHandler.ScnHandlerMaster;
+import model.Global;
+import model.SceneStack;
 
 public class GamePanel extends JPanel
 {
@@ -19,19 +19,12 @@ public class GamePanel extends JPanel
     private BufferedImage bgi;
 
     private boolean isBgiChanged;
-    
-    public static enum scene
-    {
-        TITLE,
-        POPUP
-    }
-    public ArrayList<scene> curScene = new ArrayList<>();
 
     GamePanel()
     {
         keyH = new KeyHandler();
         scnH = new ScnHandlerMaster();
-        curScene.add(scene.TITLE);
+        SceneStack.init();
         isBgiChanged = false;
 
         this.setDoubleBuffered(true);
@@ -66,12 +59,13 @@ public class GamePanel extends JPanel
             try
             {
                 bgi = ResLoader.getImg(Global.bgiName);
-                if (bgi != null) isBgiChanged = false;
+                isBgiChanged = false;
             }
             catch (IllegalArgumentException e)
             {
                 Logger.error("@GamePanel", e);
                 changeBgi("null");
+                bgi = ResLoader.getImg("null");
             }
         }
 

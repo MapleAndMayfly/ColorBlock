@@ -8,20 +8,24 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
+import model.Global;
+
 public class ResLoader
 {
     // 所有图像 - all the images
     private static Map<String, BufferedImage> imgMap = new HashMap<>();
     private MetaReader metaReader = new MetaReader();
 
-    public static BufferedImage getImg(String key) throws IllegalArgumentException
+    public static BufferedImage getImg(String key)
     {
-        BufferedImage img = imgMap.get(key);
-        if (img == null)
+        if (imgMap.containsKey(key))
         {
-            throw new IllegalArgumentException("Image not found for key: " + key);
+            return imgMap.get(key);
         }
-        return img;
+        else
+        {
+            throw new IllegalArgumentException("Can't get value from key: " + key);
+        }
     }
 
     /**
@@ -59,7 +63,7 @@ public class ResLoader
 
     private void loadImg(Map<String, String> target)
     {
-        imgMap.put("null", null);
+        imgMap.put("null", new BufferedImage(10, 10, BufferedImage.TYPE_BYTE_GRAY));
 
         target.forEach((key, value) ->
         {
