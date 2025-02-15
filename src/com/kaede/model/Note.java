@@ -1,4 +1,4 @@
-package model;
+package com.kaede.model;
 
 public abstract class Note
 {
@@ -47,5 +47,4 @@ public abstract class Note
     {
         return null;
     }
-
 }

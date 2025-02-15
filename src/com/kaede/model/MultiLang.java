@@ -1,10 +1,10 @@
-package model;
+package com.kaede.model;
+
+import com.kaede.controller.Logger;
+import com.kaede.controller.MetaReader;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import controller.Logger;
-import controller.MetaReader;
 
 public class MultiLang
 {

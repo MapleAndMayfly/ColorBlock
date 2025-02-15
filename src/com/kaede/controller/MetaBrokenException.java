@@ -1,4 +1,4 @@
-package controller;
+package com.kaede.controller;
 
 public class MetaBrokenException extends RuntimeException
 {

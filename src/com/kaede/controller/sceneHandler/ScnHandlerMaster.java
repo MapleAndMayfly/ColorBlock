@@ -1,16 +1,18 @@
-package controller.sceneHandler;
+package com.kaede.controller.sceneHandler;
 
-import controller.Logger;
-import model.SceneStack;
-import view.GamePanel;
+import com.kaede.controller.Logger;
+import com.kaede.model.SceneStack;
+import com.kaede.view.GamePanel;
 
 public class ScnHandlerMaster implements SceneHandler
 {
-    TitleScnHandler titleH;
+    private GamePanel gPanel;
+    private TitleScnHandler titleH;
 
-    public ScnHandlerMaster()
+    public ScnHandlerMaster(GamePanel gPanel)
     {
-        titleH = new TitleScnHandler();
+        this.gPanel = gPanel;
+        titleH = new TitleScnHandler(gPanel);
 
         Logger.log("@ScnHandlerMaster: ScnHandlerMaster is ready.");
     }
@@ -21,7 +23,7 @@ public class ScnHandlerMaster implements SceneHandler
      * @param gp 主界面 - main interface
      */
     @Override
-    public void handle(GamePanel gp)
+    public void handle()
     {
         if (SceneStack.isScnChanged) changeScn();
 
@@ -29,11 +31,11 @@ public class ScnHandlerMaster implements SceneHandler
         {
             case SceneStack.scene.TITLE:
                 // 退出游戏 - Exit the game
-                if (gp.getKeyH().EscDown)
+                if (gPanel.getKeyH().EscDown)
                 {
                     SceneStack.changeScn(SceneStack.scene.POPUP_EXIT);
                 }
-                
+
                 break;
             default:
                 break;
@@ -42,6 +44,16 @@ public class ScnHandlerMaster implements SceneHandler
 
     private void changeScn()
     {
+        SceneStack.isScnChanged = false;
+        gPanel.removeAll();
 
+        switch (SceneStack.getCurScn())
+        {
+            case SceneStack.scene.TITLE:
+                titleH.onEnter();
+                break;
+            default:
+                break;
+        }
     }
 }

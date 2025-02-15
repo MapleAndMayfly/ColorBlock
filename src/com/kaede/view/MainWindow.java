@@ -1,9 +1,9 @@
-package view;
+package com.kaede.view;
 
 import javax.swing.JFrame;
 
-import controller.Logger;
-import model.Global;
+import com.kaede.controller.Logger;
+import com.kaede.model.Global;
 
 import java.awt.GridBagLayout;
 import java.awt.Color;

@@ -1,8 +1,10 @@
-package controller;
+package com.kaede.controller;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -15,7 +17,8 @@ public class MetaReader
         Logger.log("@MetaReader: Reading meta file [" + path + "].");
 
         Map<String, Map<String, String>> ret = new HashMap<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(path)))
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(path);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream)))
         {
             String line;
 

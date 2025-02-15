@@ -1,4 +1,4 @@
-package model;
+package com.kaede.model;
 
 public enum Result
 {

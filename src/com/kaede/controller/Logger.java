@@ -1,4 +1,7 @@
-package controller;
+package com.kaede.controller;
+
+import com.kaede.model.Global;
+import com.kaede.model.MultiLang;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -8,9 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
-
-import model.Global;
-import model.MultiLang;
 
 public class Logger
 {

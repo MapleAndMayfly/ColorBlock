@@ -1,14 +1,15 @@
-package controller;
+package com.kaede.controller;
+
+import com.kaede.model.Global;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
-
-import model.Global;
 
 public class ResLoader
 {
@@ -70,7 +71,8 @@ public class ResLoader
             try
             {
                 String imgPath = value + key + ".png";
-                BufferedImage img = ImageIO.read(new File(imgPath));
+                InputStream inputStream = getClass().getClassLoader().getResourceAsStream(imgPath);
+                BufferedImage img = ImageIO.read(inputStream);
                 if (img != null)
                 {
                     imgMap.put(key, img);

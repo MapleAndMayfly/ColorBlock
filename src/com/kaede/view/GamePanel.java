@@ -1,16 +1,16 @@
-package view;
+package com.kaede.view;
+
+import com.kaede.controller.KeyHandler;
+import com.kaede.controller.Logger;
+import com.kaede.controller.ResLoader;
+import com.kaede.controller.sceneHandler.ScnHandlerMaster;
+import com.kaede.model.Global;
+import com.kaede.model.SceneStack;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
-
-import controller.KeyHandler;
-import controller.Logger;
-import controller.ResLoader;
-import controller.sceneHandler.ScnHandlerMaster;
-import model.Global;
-import model.SceneStack;
 
 public class GamePanel extends JPanel
 {
@@ -23,7 +23,7 @@ public class GamePanel extends JPanel
     GamePanel()
     {
         keyH = new KeyHandler();
-        scnH = new ScnHandlerMaster();
+        scnH = new ScnHandlerMaster(this);
         SceneStack.init();
         isBgiChanged = false;
 
@@ -90,7 +90,7 @@ public class GamePanel extends JPanel
 
     public void _draw(double delta)
     {
-        scnH.handle(this);
+        scnH.handle();
         this.repaint();
     }
 }

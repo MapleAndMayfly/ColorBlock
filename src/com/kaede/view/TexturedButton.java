@@ -1,4 +1,4 @@
-package view;
+package com.kaede.view;
 
 import javax.swing.JButton;
 

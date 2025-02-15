@@ -1,12 +1,12 @@
-package view;
+package com.kaede.view;
+
+import com.kaede.controller.Logger;
+import com.kaede.controller.ResLoader;
+import com.kaede.model.Global;
+import com.kaede.model.MultiLang;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-
-import controller.Logger;
-import controller.ResLoader;
-import model.Global;
-import model.MultiLang;
 
 public class Main
 {

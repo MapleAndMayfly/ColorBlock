@@ -1,4 +1,4 @@
-package controller;
+package com.kaede.controller;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
