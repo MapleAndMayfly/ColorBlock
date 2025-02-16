@@ -12,11 +12,9 @@ public class Main
 {
     public static void main(String[] args)
     {
-        // TODO: initialize attributes of Global
-
+        Global.init();
         Logger.init();
-
-        MultiLang.changeLocale(Global.locale);
+        MultiLang.init();
 
         MainWindow mainWindow = new MainWindow();
 

@@ -1,7 +1,7 @@
 package com.kaede.controller;
 
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,12 +12,13 @@ public class MetaReader
 {
     private String curOuterKey = "null";
 
-    public Map<String, Map<String, String>> readMeta(String path) throws IOException, MetaBrokenException
+    public Map<String, Map<String, String>> readMeta(String path, boolean isInJar) throws IOException, MetaBrokenException
     {
         Logger.log("@MetaReader: Reading meta file [" + path + "].");
 
         Map<String, Map<String, String>> ret = new HashMap<>();
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(path);
+        InputStream inputStream = isInJar ? getClass().getClassLoader().getResourceAsStream(path)
+                                          : new FileInputStream(path);
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream)))
         {
             String line;
@@ -32,6 +33,11 @@ public class MetaReader
 
         Logger.log("@MetaReader: File [" + path + "] reading accomplished.");
         return ret;
+    }
+
+    public Map<String, Map<String, String>> readMeta(String path) throws IOException, MetaBrokenException
+    {
+        return readMeta(path, true);
     }
 
     private void parseLine(String metaPath, Map<String, Map<String, String>> target, String line)

@@ -7,6 +7,7 @@ import com.kaede.controller.sceneHandler.ScnHandlerMaster;
 import com.kaede.model.Global;
 import com.kaede.model.SceneStack;
 
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 

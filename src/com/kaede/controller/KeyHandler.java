@@ -3,6 +3,8 @@ package com.kaede.controller;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import com.kaede.model.Global;
+
 public class KeyHandler implements KeyListener
 {
     public boolean EscDown = false;
@@ -23,6 +25,7 @@ public class KeyHandler implements KeyListener
             //*
             case KeyEvent.VK_F8:        // 仅调试用 - for debugging only
                 Logger.log("@KeyHandler: F8 pressed, system exit.");
+                Global.save();
                 System.exit(0);  //*/
 
             case KeyEvent.VK_ESCAPE:

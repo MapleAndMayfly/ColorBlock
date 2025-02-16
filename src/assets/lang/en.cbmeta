@@ -1,0 +1,26 @@
+#en:
+! title interface
+!
+"text.title.press_to_start" : "- Press Any Key to Start -"
+
+
+! elements of exception popup
+!
+"title.popup.exception" : "Oh [Filtered] excption occurs (T_T)"
+"message.popup.exception.part1" : "Exception occurs: "
+// + exception class name\n
+"message.popup.exception.part2" : "Please seek for help with log file instead of a photo or screenshot of this popup."
+// + \n
+"message.popup.exception.part3" : "File path: "
+// + location of log file
+
+
+! popup in game
+!
+"message.popup.exit" : "Are U sure to EXIT?"
+
+
+! 按钮选项
+!
+"text.button.OK" : "Yeah"
+"text.button.cancel" : "JK."

@@ -126,13 +126,20 @@ public class MainWindow extends JFrame
         int dispW = this.getWidth();
         int dispH = this.getHeight();
 
-        if (dispH * Global.SCR_PROPORTION.get(Global.scrProp) > dispW)
+        try
         {
-            dispH = (int)(dispW / Global.SCR_PROPORTION.get(Global.scrProp));
+            if (dispH * Global.SCR_PROPORTION.get(Global.scrProp) > dispW)
+            {
+                dispH = (int)(dispW / Global.SCR_PROPORTION.get(Global.scrProp));
+            }
+            else
+            {
+                dispW = (int)(dispH * Global.SCR_PROPORTION.get(Global.scrProp));
+            }
         }
-        else
+        catch (Exception e)
         {
-            dispW = (int)(dispH * Global.SCR_PROPORTION.get(Global.scrProp));
+            Logger.error("@MainWindow", e);
         }
 
         gPanel.setPreferredSize(new Dimension(dispW, dispH));
@@ -141,6 +148,5 @@ public class MainWindow extends JFrame
         String msg = "@MainWindow: Size of GamePanel changes to " +
                      dispW + "*" + dispH + " (" + Global.scrProp + ")";
         Logger.log(msg);
-        gPanel.changeBgi(Global.bgiName);
     }
 }

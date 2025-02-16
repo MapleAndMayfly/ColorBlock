@@ -3,7 +3,6 @@ package com.kaede.controller;
 import com.kaede.model.Global;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
@@ -15,7 +14,6 @@ public class ResLoader
 {
     // 所有图像 - all the images
     private static Map<String, BufferedImage> imgMap = new HashMap<>();
-    private MetaReader metaReader = new MetaReader();
 
     public static BufferedImage getImg(String key)
     {
@@ -37,9 +35,9 @@ public class ResLoader
         imgMap.clear();
 
         Map<String, Map<String, String>> dict = null;
-
         try
         {
+            MetaReader metaReader = new MetaReader();
             dict = metaReader.readMeta(Global.dictPath);
         }
         catch (Exception e)

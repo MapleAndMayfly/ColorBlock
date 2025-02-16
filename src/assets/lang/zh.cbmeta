@@ -1,0 +1,26 @@
+#zh:
+! 标题界面
+!
+"text.title.press_to_start" : "- 按任意键以开始 -"
+
+
+! 出现异常时窗口要素
+!
+"title.popup.exception" : "程序被玩坏了！这肯定不是……【已屏蔽】"
+"message.popup.exception.part1" : "程序出现异常: "
+// + 异常类名\n
+"message.popup.exception.part2" : "如果要需求帮助，请将日志文件发给对方，而不是这个窗口的照片或截图。"
+// + \n
+"message.popup.exception.part3" : "文件位置: "
+// + log文件位置
+
+
+! 游戏内弹窗文字
+!
+"message.popup.exit" : "确认退出?"
+
+
+! 按钮选项
+!
+"text.button.OK" : "确定"
+"text.button.cancel" : "取消"

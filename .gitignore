@@ -1,4 +1,5 @@
-bin/
 .vscode/
-*.ai
+bin/
 logs/
+*.ai
+.conf

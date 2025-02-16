@@ -90,10 +90,10 @@ public class Logger
         String absolutePath = logFile.getAbsolutePath();
 
         msg.append(MultiLang.getText("message.popup.exception.part1"))
-           .append(e.getClass().getSimpleName()).append("\n  ")
-           .append(MultiLang.getText("message.popup.exception.part2"))
-           .append(" [" + absolutePath + "]")
-           .append(MultiLang.getText("message.popup.exception.part3"));
+           .append(e.getClass().getSimpleName()).append("\n")
+           .append(MultiLang.getText("message.popup.exception.part2")).append("\n")
+           .append(MultiLang.getText("message.popup.exception.part3"))
+           .append(absolutePath);
 
         JOptionPane.showMessageDialog(null, msg.toString(),
          MultiLang.getText("title.popup.exception"), 0);

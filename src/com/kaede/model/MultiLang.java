@@ -10,9 +10,17 @@ public class MultiLang
 {
     public static enum supports
     {
-        zh_CN
+        zh,
+        en
     }
     public static Map<String, String> bundle = new HashMap<>();
+
+    public static void init()
+    {
+        changeLocale(Global.locale);
+
+        Logger.log("@MultiLang: MultiLang is ready.");
+    }
 
     public static String getText(String key)
     {
@@ -24,6 +32,7 @@ public class MultiLang
         else
         {
             ret = key;
+            Logger.error("@MultiLang", new IllegalArgumentException("Can't get value from key: " + key));
         }
         return ret;
     }
@@ -39,16 +48,15 @@ public class MultiLang
         catch (Exception e)
         {
             Logger.error("@MultiLang", e);
-            changeLocale("zh_CN");
+            changeLocale("zh");
         }
-        
     }
 
     private static void getBundle(supports s)
     {
-        MetaReader metaReader = new MetaReader();
         try
         {
+            MetaReader metaReader = new MetaReader();
             bundle = metaReader.readMeta(Global.langPath + Global.locale + ".cbmeta").get(Global.locale);
         }
         catch (Exception e)
